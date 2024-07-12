@@ -16,16 +16,21 @@ function App() {
   }, [handleMouseMove]);
 
   return (
-    <div className="App" style={{ 
-      '--mouse-x': `${mousePosition.x}px`, 
-      '--mouse-y': `${mousePosition.y}px` 
-    }}>
-      <div className="background">
-        <img src="/taco_dog.png" alt="Taco Dog" className="background-image" />
-      </div>
+    <div className="App">
+      <div className="background"></div>
       <div className="content">
         <h1>TACO DOG</h1>
       </div>
+      <div className="taco-dog-container">
+        <img src="/taco_dog.png" alt="Taco Dog" className="taco-dog-image" />
+      </div>
+      <div 
+        className="inverse-circle"
+        style={{
+          left: `${mousePosition.x}px`,
+          top: `${mousePosition.y}px`,
+        }}
+      ></div>
     </div>
   );
 }
