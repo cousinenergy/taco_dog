@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
 
 function App() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = useCallback((e) => {
+    setMousePosition({ x: e.clientX, y: e.clientY });
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, [handleMouseMove]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{ 
+      '--mouse-x': `${mousePosition.x}px`, 
+      '--mouse-y': `${mousePosition.y}px` 
+    }}>
+      <div className="background">
+        <img src="/taco_dog.png" alt="Taco Dog" className="background-image" />
+      </div>
+      <div className="content">
+        <h1>TACO DOG</h1>
+      </div>
     </div>
   );
 }
