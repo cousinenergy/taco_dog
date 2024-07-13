@@ -22,7 +22,7 @@ body, html {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/Users/coganhiggins/taco-dog-site/public/background_image.png'); /* This line might be causing the issue */
+  background-image: url('/public/background_image.png'); /* This line might be causing the issue */
   background-size: cover;
   background-position: center;
   z-index: 1;
